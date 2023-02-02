@@ -5,12 +5,12 @@ import { ref, computed } from "vue";
 import TodoCreator from "@todo/TodoCreator.vue";
 import TodoItem from "@todo/TodoItem.vue";
 import type { ITodo } from "@interface/Todo";
-const todoList = ref<ITodo[]>([]);
+const todoList = ref<Array<ITodo>>([]);
 const todosCompleted = computed(() => {
   return todoList.value.every((todo: ITodo) => todo.isCompleted);
 });
 const fetchTodoList = () => {
-  const savedTodoList = JSON.parse(localStorage.getItem("todoList") || "");
+  const savedTodoList = JSON.parse(localStorage.getItem("todoList") || "null");
   if (savedTodoList) {
     todoList.value = savedTodoList;
   }
